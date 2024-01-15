@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* <navbar> */
+.input-search {
+    width: 550px;
+    border: 1px solid rgb(184, 180, 180);
+    background: white;
+    box-shadow: none;
+    font-size: 14px;
+}
+
+.city {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(26, 26, 26);
+    padding-right: 15px;
+    line-height: 19px;
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
+.city-icon {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.signIn-btn {
+    color: rgb(255, 255, 255);
+    background-color: rgb(248, 68, 100);
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    width: 67px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid rgb(248, 68, 100);
+    display: block;
+}
+.login-image{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-indent: -9999px;
+    border: 1px solid rgb(255, 255, 255);
+    display: block;
+}
+.login-name{
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    color: rgb(51, 51, 51);
+    line-height: 19px;
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 12px;
+}
+.sub-container {
+    background: rgb(245, 245, 245);
+}
+
+/* </navbar> */
+.banner-img {
+    background: rgb(230, 228, 228);
+}
+
+.splide__slide img {
+    height: 300px;
+    width: 1260px;
+    object-fit: initial;
+    border-radius: 10px;
+}
+
+.Recommend-text {
+    word-break: break-word;
+    color: rgb(51, 51, 51);
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.17;
+}
+
+.movie-card {
+    margin-top: 13px;
+    scroll-behavior: smooth;
+    overflow: hidden;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(10, calc(20% - 25.6px));
+    grid-template-rows: repeat(1, 1fr);
+    grid-auto-flow: column;
+    gap: 8px 32px;
+    transform: initial;
+}
+
+.card-img {
+    object-fit: cover;
+    transition: visibility 0s ease 0s, opacity 0.3s linear 0s;
+    opacity: 1;
+    visibility: visible;
+    border-radius: 10px;
+}
+
+.splide__arrow svg {
+    padding: 0px;
+    height: 1.2em;
+    width: 1.2em;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.exp-text {
+    margin: 0px;
+    word-break: break-word;
+    color: rgb(220, 53, 88);
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.43;
+}
+
+.title {
+    margin: 0px 0px 4px;
+    word-break: break-word;
+    color: rgb(34, 34, 34);
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* <LiveEventSection> */
+.live-text {
+    word-break: break-word;
+    color: rgb(51, 51, 51);
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.17;
+}
+
+.event-card {
+    scroll-behavior: smooth;
+    overflow: hidden;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(10, calc(20% - 25.6px));
+    grid-template-rows: repeat(1, 1fr);
+    grid-auto-flow: column;
+    gap: 8px 32px;
+    transform: initial;
+}
+
+.event-img{
+    border-radius: 10px;
+}
+
+/* </LiveEventSection> */
+
+/* <premiere> */
+.premiere-text{
+    word-break: break-word;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.17;
+}
+.brand-text{
+    word-break: break-word;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.43;
+}
+.premiere-card{
+    scroll-behavior: smooth;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(10, calc(20% - 25.6px));
+    grid-template-rows: repeat(1, 1fr);
+    grid-auto-flow: column;
+    gap: 25px;
+    transform: initial;
+    padding-top: 10px;
+}
+.premiere-card img{
+    border-radius: 10px;
+}
+.premiere-title{
+    margin: 0px 0px 4px;
+    word-break: break-word;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* </premiere> */
+/* <sidebar> */
+.sidebar-text{
+    display: flex;
+    flex-flow: row;
+    opacity: 1;
+    color: rgb(116, 126, 170);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    padding: 0px 16px;
+}
+.sidebar-list li {
+    border-bottom: 1px solid #ddd;
+    padding: 19px;
+  }
+.sidebar-list i:last-child {
+    border-bottom: none
+  }
+  .sidebar-list li button{
+    border:1px solid black;
+    border-radius: 10px;
+    border-color: rgb(248,68,100);
+    padding: 10px;
+    line-height: 10px;
+
+  }
+  .fade-section{
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  /* </sidebar> */
+  /* <login> */
+  .login-text{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    text-transform: none;
+    color: rgb(51, 51, 51);
+  }
+  .login-box{
+    border: 1px solid rgb(184, 180, 180);
+    padding:  10px 13px;
+  }
