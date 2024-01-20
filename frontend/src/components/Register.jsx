@@ -29,7 +29,7 @@ const Register = ({registerPage,setRegisterPage}) => {
        }
        const handleSubmit = (e) => {
         e.preventDefault()
-        senderFunction().then(() => {navigate("/login")
+        senderFunction().then(() => {
         setRegisterPage(!registerPage)
        })
        }

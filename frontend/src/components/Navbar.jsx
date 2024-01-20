@@ -6,8 +6,10 @@ import menu from '../assets/images/menu.svg'
 import Sidebar from './Sidebar'
 import Login from './Login'
 import { Link, Outlet } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Navbar = () => {
+  const isUserLoggedIn=useSelector((state)=>state.user.isLoggedIn)
   const listItems = [
     { id: 1, value: "movies" },
     { id: 2, value: "stream" },
@@ -42,12 +44,18 @@ const Navbar = () => {
             <div className='mt-1'>
               <img src={select} className='overflow-hidden' />
             </div>
-            <div>
-            <Link className='signIn-btn mx-3' to="/login" onClick={()=>setLoginBox(!loginBox)}>Sign in</Link>
-          </div>
-          <div className='mt-1 '>
-            <img src={menu} className='overflow-hidden mx-2'  onClick={()=>setSideBar(!sidebar)} />
-          </div>
+            {isUserLoggedIn?<><div>
+              <img src="https://assets-in.bmscdn.com/static/2023/10/default-pic.png" className='login-image cursor-pointer'/>
+              </div>
+              <div>
+             <span className='login-name cursor-pointer' onClick={()=>setSideBar(!sidebar)}>Hi,</span>
+              </div></>:<> <div>
+              <Link className='signIn-btn mx-3'  onClick={()=>setLoginBox(!loginBox)}>Sign in</Link>
+            </div>
+            <div className='mt-1 '>
+              <img src={menu} className='overflow-hidden mx-2'  onClick={()=>setSideBar(!sidebar)} />
+            </div></>}
+           
 
           </div>
         </div>

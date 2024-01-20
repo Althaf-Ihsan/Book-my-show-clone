@@ -106,10 +106,27 @@ const refreshAdminToken = asyncWrapper((req, res, next) => {
     })
 }
 )
+const Adminlogout=asyncWrapper(async(req,res,next)=>{
+    const cookie = req.headers.cookie
+    const oldToken = cookie.split("=")[1]
+    console.log(oldToken)
+    if (!oldToken) {
+        return next(createCustomError("something went wrong", 400))
+    }
+    jwt.verify(String(oldToken), process.env.JWT_SECRET, (err,admin) => {
+        if (err) {
+            return next(createCustomError("authentification failed", 403))
+        }
+        res.clearCookie(`${admin._id}`);
+        req.cookies[`${admin.id}`] ="";
+        return res.status(200).json({msg:"logged out",success:true})
+    })
+})
 module.exports={
     addAdmin,
     adminLogin,
     getAdmin,
     verifyAdminToken,
-    refreshAdminToken
+    refreshAdminToken,
+    Adminlogout
 }

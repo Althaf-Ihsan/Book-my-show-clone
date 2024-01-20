@@ -19,11 +19,12 @@ const AuthForm = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        senderFunction()
-            .then(() => {
-                dispatch(adminActions.login())
-                navigate("/admin/home")
-            })
+        senderFunction().
+        then((data)=>{dispatch(adminActions.login())
+        localStorage.setItem("token",data.Admintoken)
+        navigate("/admin/home")
+        })
+        .catch((err)=>console.log(err))
     }
     const senderFunction = async () => {
         const res = await axios.post("http://localhost:5000/admin/login", {
@@ -33,7 +34,6 @@ const AuthForm = () => {
             .catch((error) => {
                 console.log(error)
             })
-        console.log(res)
         const data = await res.data
         return data
     }

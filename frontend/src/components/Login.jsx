@@ -7,13 +7,20 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, googleAuthprovider } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import Register from './Register';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../Store';
+import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Login = ({ loginBox, setLoginBox }) => {
+    const [visible,setVisible]=useState(false)
+    const dispatch=useDispatch();
     AOS.init({
         once: true,
     });
     const [email, setEmail] = useState('')
     const [registerPage,setRegisterPage]=useState(false)
+    const [user,setUser]=useState("")
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -32,7 +39,8 @@ const Login = ({ loginBox, setLoginBox }) => {
                 localStorage.setItem("email", data.user.email)
             })
             setLoginBox(!loginBox)
-            navigate("/")
+            dispatch(userActions.login())
+            navigate("/user")
         }
         catch (err) {
             console.log(err)
@@ -48,7 +56,7 @@ const Login = ({ loginBox, setLoginBox }) => {
                 console.log(error)
             })
         console.log(res)
-        const data = await res.data
+        const data = await res.data.user
         return data
     }
     const handleSubmit = (e) => {
@@ -56,7 +64,8 @@ const Login = ({ loginBox, setLoginBox }) => {
         senderFunction()
         .then(() => {
             setLoginBox(!loginBox)
-            navigate("/")})
+            dispatch(userActions.login())
+            navigate("/user")})
     }
     useEffect(() => {
         setEmail(localStorage.getItem('email'))
@@ -85,11 +94,14 @@ const Login = ({ loginBox, setLoginBox }) => {
                         <div className="md:w-2/3 flex flex-col gap-2">
                           
                                 <input name="email" type="email" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:text-center  sm:text-sm sm:leading-6" placeholder='Enter Email' onChange={handelChange}></input>
-                                <input name="password" type="password" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:text-center  sm:text-sm sm:leading-6" placeholder='Enter Password' onChange={handelChange}></input>
+                                <div className='relative'><input name="password" type={visible?"text":"password"} className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:text-center  sm:text-sm sm:leading-6" placeholder='Enter Password' onChange={handelChange}></input>
+                              {visible?<AiOutlineEye size={18} className='absolute top-2 right-2' onClick={()=>setVisible(!visible)}/>:<AiOutlineEyeInvisible size={18} className='absolute top-2 right-2'  onClick={()=>setVisible(!visible)}/>}  
+                                </div>
+                                
                            
                         </div>
                         <button type="submit" className="w-1/3 text-white bg-black hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-3">Sign in</button>
-                        <Link className="font-semibold text-[15px] leading-6 text-slate-600 hover:text-slate-500" to="/register" onClick={()=>setRegisterPage(!registerPage)}>Register For New Account</Link>
+                        <Link className="font-semibold text-[15px] leading-6 text-slate-600 hover:text-slate-500"  onClick={()=>setRegisterPage(!registerPage)}>Register For New Account</Link>
                     </div>
                     </form>
                     </>

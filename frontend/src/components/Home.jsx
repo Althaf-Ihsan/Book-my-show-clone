@@ -7,11 +7,9 @@ import Footer from './Footer'
 const Home = () => {
   return (
     <>
-    <Navbar/>
     <Carousel/>
     <MovieCard/>
-    <EventSection/> 
-    <Footer/>   
+    <EventSection/>    
     </>
   )
 }
